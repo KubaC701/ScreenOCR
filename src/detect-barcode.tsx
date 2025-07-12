@@ -1,29 +1,32 @@
 import { Clipboard, closeMainWindow, showToast, Toast } from "@raycast/api";
-import { recognizeText } from "./utils";
+import { detectBarcode } from "./utils";
 
 export default async function command() {
   await closeMainWindow();
 
   try {
-    const recognizedText = await recognizeText();
+    const detectedCodes = await detectBarcode();
 
-    if (!recognizedText) {
+    if (
+      !detectedCodes ||
+      detectedCodes === "No barcodes or QR codes detected"
+    ) {
       return await showToast({
         style: Toast.Style.Failure,
-        title: "No text detected",
+        title: "No barcodes or QR codes detected",
       });
     }
 
-    await Clipboard.copy(recognizedText);
+    await Clipboard.copy(detectedCodes);
     await showToast({
       style: Toast.Style.Success,
-      title: "Copied text to clipboard",
+      title: "Copied barcode/QR code to clipboard",
     });
   } catch (e) {
     console.error(e);
     await showToast({
       style: Toast.Style.Failure,
-      title: "Failed detecting text",
+      title: "Failed detecting barcode/QR code",
     });
   }
 }
