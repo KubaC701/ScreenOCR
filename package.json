@@ -192,10 +192,9 @@
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
     "publish": "npx @raycast/api@latest publish",
-    "postinstall": "node -e \"if (process.platform === 'win32') { console.log('\\n⚠️  Remember to build the Windows OCR module: npm run build:windows-ocr\\n'); }\""
+    "postinstall": "echo \"\n⚠️  Remember to build the Windows OCR module: npm run build:windows-ocr\n\""
   },
   "platforms": [
-    "macOS",
     "windows"
   ]
 }
