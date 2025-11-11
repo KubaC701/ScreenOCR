@@ -1,6 +1,6 @@
-# Windows Support for ScreenOCR
+# ScreenOCR for Windows - Setup Guide
 
-This extension now supports **Windows** using the native Windows.Media.Ocr API!
+This extension uses the native **Windows.Media.Ocr API** for local, offline text recognition!
 
 ## Requirements
 
@@ -63,11 +63,7 @@ The Windows implementation uses a hybrid architecture:
 2. **TypeScript Wrapper** (`src/utils-windows.ts`):
    - Spawns the native executable
    - Parses JSON results
-   - Provides the same interface as the macOS version
-
-3. **Platform Detection** (`src/utils.ts`):
-   - Automatically detects the operating system
-   - Routes calls to the appropriate backend
+   - Integrates with Raycast extension
 
 ## Language Support
 
@@ -121,7 +117,7 @@ Windows OCR languages are managed through Windows Settings:
 
 2. **No Barcode Detection Yet**: The barcode/QR code detection feature is not yet implemented for Windows.
 
-3. **Language Correction**: Windows.Media.Ocr doesn't have a direct equivalent to macOS's "language correction" feature, but it still provides high-quality results.
+3. **Language Correction**: The language correction option is accepted but may not have significant impact on Windows.Media.Ocr results.
 
 ## Troubleshooting
 
@@ -154,11 +150,9 @@ npm run build:windows-ocr
 ```
 ScreenOCR/
 ├── src/
-│   ├── utils.ts              # Platform detection & routing
-│   ├── utils-windows.ts      # Windows implementation
+│   ├── utils.ts              # Main utils wrapper
+│   ├── utils-windows.ts      # Windows OCR implementation
 │   └── ...                   # Other TypeScript files
-├── swift/                    # macOS implementation
-│   └── ...
 ├── windows-ocr/              # Windows native module
 │   ├── Program.cs           # Main OCR logic
 │   ├── WindowsOCR.csproj    # C# project file
@@ -182,18 +176,13 @@ dotnet build -c Release
 
 ### Testing
 
-Test on both platforms to ensure cross-platform compatibility:
-
-**macOS:**
 ```bash
-npm run dev
-# Test OCR functionality
-```
-
-**Windows:**
-```bash
+# Build the native module
 npm run build:windows-ocr
+
+# Run in development mode
 npm run dev
+
 # Test OCR functionality
 ```
 
@@ -221,9 +210,8 @@ Please check the [GitHub Issues](https://github.com/[your-repo]/ScreenOCR/issues
 
 ## Credits
 
-- macOS implementation uses Apple's VisionKit
-- Windows implementation uses Windows.Media.Ocr
-- Built for [Raycast](https://www.raycast.com/)
+- Built for [Raycast for Windows](https://www.raycast.com/windows)
+- Uses Windows.Media.Ocr API
 
 ## License
 
