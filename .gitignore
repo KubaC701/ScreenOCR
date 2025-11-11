@@ -274,3 +274,33 @@ raycast-env.d.ts
 .raycast-swift-build
 raycast-env.d.ts
 compiled_raycast_swift
+
+# ---- Windows / .NET ----
+# Build results
+windows-ocr/bin/
+windows-ocr/obj/
+windows-ocr/.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options
+.vs/
+
+# Build Results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/

@@ -187,12 +187,15 @@
   },
   "scripts": {
     "build": "ray build -e dist",
+    "build:windows-ocr": "cd windows-ocr && dotnet build -c Release",
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
-    "publish": "npx @raycast/api@latest publish"
+    "publish": "npx @raycast/api@latest publish",
+    "postinstall": "node -e \"if (process.platform === 'win32') { console.log('\\n⚠️  Remember to build the Windows OCR module: npm run build:windows-ocr\\n'); }\""
   },
   "platforms": [
-    "macOS"
+    "macOS",
+    "windows"
   ]
 }
