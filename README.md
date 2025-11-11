@@ -1,9 +1,16 @@
 # ScreenOCR
 
 ScreenOCR allows you to quickly and easily extract text from screen captures via OCR, perfect for extracting text from any on-screen content. <br>
-All processing is done locally on device via Apple's VisionKit ML API.
+All processing is done locally on device:
+- **macOS**: Uses Apple's VisionKit ML API
+- **Windows**: Uses Windows.Media.Ocr API
 
 **Note**: This extension requires "Screen Recording" permission to work (it's the only way to capture screenshots)
+
+## Platform Support
+
+- ✅ **macOS** - Full support with Apple Vision framework
+- ✅ **Windows** - Full support with Windows.Media.Ocr - [See Windows Setup Guide](./WINDOWS.md)
 
 ![screenshot](https://raw.githubusercontent.com/neo773/ScreenOCR/main/metadata/screenocr-1.png)
 
